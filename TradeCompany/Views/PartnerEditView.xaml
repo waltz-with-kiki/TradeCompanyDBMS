@@ -1,0 +1,84 @@
+﻿<Window x:Class="TradeCompany.Views.PartnerEditView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TradeCompany.Views"
+        xmlns:vm="clr-namespace:TradeCompany.ViewModels"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance vm:PartnerEditViewModel}"
+        Title="{Binding Title}" Height="450" Width="800">
+
+    <DockPanel Margin="3">
+        <UniformGrid Rows="1" DockPanel.Dock="Bottom" Margin="5" HorizontalAlignment="Right">
+            <Button Content="Ok" Margin="3" Padding="20,3" FontWeight="Bold" IsDefault="True"
+                    Command="{StaticResource DialogResultCommand}"
+                    CommandParameter="True"/>
+            <Button Content="Cancel" Margin="3" Padding="20,3" IsCancel="True"
+                    Command="{StaticResource DialogResultCommand}"
+                    CommandParameter="False"/>
+        </UniformGrid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0"></Label>
+            <TextBlock Grid.Row="1" Text="Название:"/>
+            <TextBox Grid.Row="1" Margin="10,0,0,0" Width="200" Text="{Binding Name}"/>
+
+            <Label Grid.Row="2"></Label>
+            <TextBlock Grid.Row="3" Text="Страна:"/>
+            <ComboBox Grid.Row="3" Margin="10,0,0,0" Width="200" ItemsSource="{Binding Countries}" SelectedItem="{Binding country}"/>
+
+            <Label Grid.Row="4"></Label>
+            <TextBlock Grid.Row="5" Text="Руководитель:"/>
+            <ComboBox Grid.Row="5" Margin="10,0,0,0" Width="200" ItemsSource="{Binding HeadPersons}" SelectedItem="{Binding headPerson}"/>
+
+            <Label Grid.Row="6"></Label>
+            <TextBlock Grid.Row="7" Text="Юридический адрес:"/>
+            <TextBox Grid.Row="7" Width="200"  Margin="10,0,0,0" Text="{Binding LegalAdress}"/>
+
+            <Label Grid.Row="8"></Label>
+            <TextBlock Grid.Row="9" Text="Номер телефона:"/>
+            <TextBox Text="{Binding PhoneNumber}" Width="200" Grid.Row="9" Margin="10,0,0,0"/>
+
+            <Label Grid.Row="10"></Label>
+            <TextBlock Grid.Row="11" Text="Email:"/>
+            <TextBox Grid.Row="11" Margin="10,0,0,0" Width="200" Text="{Binding Email}"/>
+
+            
+            <Label Grid.Row="12"></Label>
+            <TextBlock Grid.Row="13" Text="Банк:"/>
+            <ComboBox Grid.Row="13" Margin="10,0,0,0" Width="200" ItemsSource="{Binding Banks}" SelectedItem="{Binding bank}"/>
+
+            <Label Grid.Row="14"></Label>
+            <TextBlock Grid.Row="15" Text="Банковский счёт:"/>
+            <TextBox Grid.Row="15" Margin="10,0,0,0" Width="200" Text="{Binding BankAccount}"/>
+
+            <Label Grid.Row="16"></Label>
+            <TextBlock Grid.Row="17" Text="Инн:"/>
+            <TextBox Grid.Row="17" Margin="10,0,0,0" Width="200" Text="{Binding Inn}"/>
+
+
+        </Grid>
+    </DockPanel>
+</Window>

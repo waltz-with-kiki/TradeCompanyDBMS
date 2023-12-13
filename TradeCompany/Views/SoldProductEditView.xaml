@@ -1,0 +1,91 @@
+﻿<Window x:Class="TradeCompany.Views.SoldProductEditView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:local="clr-namespace:TradeCompany.Views"
+        xmlns:vm="clr-namespace:TradeCompany.ViewModels"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance vm:SoldProductEditViewModel}"
+        Title="{Binding Title}" Height="450" Width="800">
+
+    <DockPanel Margin="3">
+        <UniformGrid Rows="1" DockPanel.Dock="Bottom" Margin="5" HorizontalAlignment="Right">
+            <Button Content="Ok" Margin="3" Padding="20,3" FontWeight="Bold" IsDefault="True"
+                    Command="{StaticResource DialogResultCommand}"
+                    CommandParameter="True"/>
+            <Button Content="Cancel" Margin="3" Padding="20,3" IsCancel="True"
+                    Command="{StaticResource DialogResultCommand}"
+                    CommandParameter="False"/>
+        </UniformGrid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0"></Label>
+            <TextBlock Grid.Row="1" Text="Заказ:"/>
+            <ComboBox Grid.Row="1" Margin="10,0,0,0" Width="200" ItemsSource="{Binding Orders}" SelectedItem="{Binding order}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Partner}" Margin="5"/>
+                            <TextBlock Text="{Binding CompletionDate, StringFormat=dd.MM.yyyy}" Margin="5"/>
+                            <!-- Добавьте другие свойства, которые хотите отображать -->
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            
+            
+            
+            <Label Grid.Row="2"></Label>
+            <TextBlock Grid.Row="3" Text="Резерв:"/>
+            <ComboBox Grid.Row="3" Margin="10,0,0,0" Width="200" ItemsSource="{Binding Stores}" SelectedItem="{Binding store}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:InvokeCommandAction Command="{Binding CalculateMaxCount}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding ShelfLife}" Margin="5"/>
+                            <TextBlock Text="{Binding InvoiceId}" Margin="5"/>
+                            <TextBlock Text="{Binding Product}" Margin="5"/>
+                            <TextBlock Text="{Binding Count}" Margin="5"/>
+                            <TextBlock Text="{Binding PricePerUnit}" Margin="5"/>
+                            <!-- Добавьте другие свойства, которые хотите отображать -->
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+            <Label Grid.Row="4"></Label>
+            <TextBlock Grid.Row="5" Text="Количество:"/>
+            <TextBox Grid.Row="5" Margin="10,0,0,0" Width="200" Text="{Binding Count}"/>
+            <TextBlock Grid.Row="5" Text="Максимум:" Margin="600,0,0,0"/>
+            <TextBlock Grid.Row="5" Text="{Binding MaxCount}" Margin="665,0,0,0"/>
+            
+        </Grid>
+    </DockPanel>
+</Window>
